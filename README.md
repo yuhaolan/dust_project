@@ -33,4 +33,3 @@ D # dust_project
     |
     |
     /log/    # this is the log to write down what I do each day in this project
-    ／temp/   # this is for some temporary file 
