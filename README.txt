@@ -1,4 +1,5 @@
-D # dust_project
+# dust_project:
+# the structure of the file folders:
 
 
 
