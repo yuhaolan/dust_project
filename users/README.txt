@@ -19,5 +19,3 @@
     |
     |   
     /data/ # this source data folder is key data file that I need to analyze
-    |
-    /log/    # this is the log folder to write down what I do each day in this project
