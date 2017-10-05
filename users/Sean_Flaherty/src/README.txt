@@ -1,4 +1,23 @@
-1.dust_rnn.py #this is for running RNN model, I test this code and find the RNN method may be wrong in some details, because of the strange results.
+
+=====================
+The source code in this folder has the following major functions
+1. test code: cnn.py, coord.py.....
+
+2. NN related code to run the NN model: dust_rnn.py, dust_runn_rudimentary.py,
+
+3. Data preprocess: 
+   
+=====================
+Details of each files
+1. testcode/cnn.py
+   Function: test xxx?
+   Usage: python testcode/cnn.py 
+
+2. dust_rnn.py 
+   Function: running RNN model
+   Usage: 
+   Note: Yuhao test this code and find the RNN method may be wrong in some details, because of the strange results.
+
 2.dust_rnn_rudimentary.py #this is the revised version of simple RNN model, and maybe has some mistakes. Becuase I test the code each iteration the accuracy is a similar fixed number.
 3.dustnn.py # this is for the simple neural networks, still the output accuracy is a fixed number in each iteration
 4.pca.py and pca_setip.py # this is for PCA
