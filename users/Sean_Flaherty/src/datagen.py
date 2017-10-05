@@ -11,7 +11,7 @@ avglon = -107.6339
 stdlat = 2.2511
 stdlon = 2.4215
 
-entries = open('events.csv',newline='')
+entries = open('events.csv')
 csvr = csv.reader(entries,delimiter=',',quotechar='|')
 
 outfile = open('entries.csv','w',newline='') #This is what the recorder script will read
@@ -26,7 +26,7 @@ for row in csvr:
     events = np.vstack((events,vec))
 events = events[1:] #chop off that row of zeros
 
-grbs = pg.open('gribs/ruc2anl_130_20070413_1800_000.grb2') #get a reference for coordinates
+grbs = pg.open('../data/ruc2.t00z.pgrb13anl.grib2') #get a reference for coordinates
 lats,lons = grbs[1].latlons()
 grbs.close()
 
@@ -46,7 +46,7 @@ while x <= d2:
             index = np.abs(candidates).argmin() #index of closest longitude
             latIndex,lonIndex = indices[index] #get the indices for the latitude and longitude
 
-            csvw.writerow(['gribs/ruc2anl_130_'+xstr+'_1800_000.grb2',latIndex,lonIndex,1]) #Write to the CSV an entry with the file name, indices, and that it is a dust event (1)
+            csvw.writerow(['ruc2anl_130_'+xstr+'_1800_000.grb2',latIndex,lonIndex,1]) #Write to the CSV an entry with the file name, indices, and that it is a dust event (1)
     else:
         lat = np.random.normal(avglat,stdlat)
         lon = np.random.normal(avglon,stdlon)
@@ -55,7 +55,7 @@ while x <= d2:
         candidates = [lons[i][j] - lon for (i,j) in indices] #get difference in longitude of each candidate
         index = np.abs(candidates).argmin() #index of closest longitude
         latIndex,lonIndex = indices[index] #get the indices for the latitude and longitude
-        csvw.writerow(['gribs/ruc2anl_130_'+xstr+'_1800_000.grb2',latIndex,lonIndex,0]) #Write to the CSV an entry with the file name, indices, and that it is a nondust event (0)
+        csvw.writerow(['ruc2anl_130_'+xstr+'_1800_000.grb2',latIndex,lonIndex,0]) #Write to the CSV an entry with the file name, indices, and that it is a nondust event (0)
     x = x + dt.timedelta(days=1)
 
 
