@@ -5,8 +5,9 @@ import numpy as np
 lat = float(input('latitude '))
 lon = float(input('longitude '))
 
-grbs = pg.open('gribs/ruc2anl_130_20070413_1800_000.grb2')
+grbs = pg.open('../ruc2.t00z.pgrb13anl.grib2')
 lats,lons = grbs[1].latlons()
+
 
 x = np.where(abs(lats-lat)<=0.01) #Get a list of candidates with close enough latitude
 indices = list(zip(*x)) #We have a list of indices of the candidates.

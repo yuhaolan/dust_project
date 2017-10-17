@@ -1,34 +1,27 @@
 # dust_project:
-# the structure of the file folders:
 
+This is the README file for dust project. 
 
+#The structure of folder
 
-                                   
-    /Users/------------ /Josue_Gutierrez/--------/src/ # this folder is for all the codes
-    |                                  |-------/data/ # this folder is for the update data
-    |                                  |------/temp/ # this folder is for some temporary file
-    |                                  |----/results/ # this folder is for the results                            
-    | --------------/Sean_Flaherty/--------/src/ # this folder is for all the codes
-    |                               |--------/data/ # this folder is for the update data
-    |                               |------/temp/ # this folder is for some temporary file
-    |                               |--------/results/ # this folder is for the results                             
-    |--------------/YuhaoLan/--------------/src/ # this folder is for all the codes
-    |                        |-------------/data/ # this folder is for the update data
-    |                        |------------/temp/ # this folder is for some temporary file 
-    |                        |-------------/results/ # this folder is for the results 
-    |
-    |   
-    /data/ # this source data folder is key data file that I need to analyze
+We have 1 /users/ folder. Under /users/ folder, we have 3 subfolder for each specific user.
 
+#The structure of each user folder(for example: /Josue_Gutierrez/)
 
-The following is about annotation of Sean_Flaherty’s code
-/Sean_Flaherty/src/
+There are 3 folders under each user folder:
 
-1.dust_rnn.py #this is for running RNN model, I test this code and find the RNN method may be wrong in some details, because of the strange results.
-2.dust_rnn_rudimentary.py #this is the revised version of simple RNN model, and maybe has some mistakes. Becuase I test the code each iteration the accuracy is a similar fixed number.
-3.dustnn.py # this is for the simple neural networks, still the output accuracy is a fixed number in each iteration
-4.pca.py and pca_setip.py # this is for PCA
-5.simplestats.py # do simple statistics about mean/std of the csv files
-6. retrieve.py #This is a simple program to read data from a GRIB file.
-7.datagen.py ##This script generates the entry list for training data to feed to our machine learning algorithms. About the output csv files, there is no headers, so it is hard to understand
-8. get*.py # short codes files to get some information of the data file
+	/data/: this is for storing some test data
+	/results/: this is for storing some important results
+	/src/: this is for storing the code
+
+#The code for Sean_Flaherty
+
+	/users/Sean_Flaherty/src/ folder contain previous code for this project, please read README.txt under this folder to know the usage of his code!
+	                     
+
+#The folder for yuhao_lan
+
+	/users/yuhao_lan/ folder is my work space. Here I add two new folders: /note/ is for updating the progress of each meeting on Monday; /temp/ is for storing the temperate files when running the code
+
+              
+    
