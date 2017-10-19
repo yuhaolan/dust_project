@@ -14,5 +14,6 @@ def ingest(filename, x, y):
         print(filename+' not found.')
         return np.array(0)
 #grbname = 'ruc2.t19z.bgrb13anl.grib2'
-#vec = ingest(grbname,0,0)
-#print(vec)
+grbname = 'data/ruc2.t00z.pgrb13anl.grib2'
+vec = ingest(grbname,0,0)
+print(vec)

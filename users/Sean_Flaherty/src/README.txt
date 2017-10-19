@@ -1,7 +1,7 @@
 
 =====================
 The source code in this folder has the following major functions
-1. test code: cnn.py, getinfo.py, gribtest.py, pca_setup.py, speedtest.py, coord.py, gettemp.py, ingestor.py, recorder.py 
+1. test code: cnn.py, coord.py, getinfo.py, gettemp.py, gribtest.py, ingestor.py, pca_setup.py, speedtest.py, recorder.py 
 
 2. NN related code to run the NN model: dust_rnn.py, dust_rnn_rudimentary.py, dustnn.py
 
@@ -16,48 +16,50 @@ test code:
 	Usage: python cnn.py
 
 	2.coord.py
-	Function: transfer [latitude,longitude] value to [latitude_index, latitude_index] of the layer1 of one grb2 file
+	Function: translate [latitude,longitude] value to [latitude_index, latitude_index] of the layer1 of one grib2 file
 	Usage: python coord.py 
 
 	3.getinfo.py
-	Function: get all (latitude,longitude) pairs in one layer of one grb2 file
+	Function: get all (latitude,longitude) pairs in one layer of one grib2 file
 	Usage: python getinfo.py
 	
 	4.gettemp.py
-	Function: get the data about layer=temperature of one grb2 file
+	Function: get the data in the given temperature layer (e.g., temperature10, temperature 20) from one grib2 file
+                  One grib2 file may contain layers for different temperature, air pressure. 
 	Usage: python gettemp.py
 
 	5.gribtest.py
-	Function: print all the layers of one grb2 file
+	Function: print all the layers of one grib2 file (e.g., if I have 18 layers in the grib2 file, this function prints 18 objects (one object for one layer)
 	Usage: python gribtest.py
 
 	6.ingestor.py
-	Function: test ingest(filename, x, y) function to open a file; filename is one grb2 file, x is row index, y is column index; 
+	Function: test ingest(filename, x, y) function to open a file; filename is one grib2 file, x is row index, y is column index; The parameters are hardcoded. 
 	Usage: python ingestor.py
+        Pre: Need named 'pygrib'
 
 	7.pca_setup.py
-	Function: import 3 libraries: bumpy,pygrib and ingestor
+	Function: import 3 libraries: bumpy,pygrib, and ingestor
 	Usage: python pca_setup.py
 
 	8.recorder.py
-	Function: try to import dust event data from the original grb2 files
+	Function: import dust event data from the original grib2 files
 	Error: lack of the specific data files, fail to confirm 
 	Usage: python recorder.py
 
 	9.speedtest.py
-	Function: try to import dust event data from the original grb2 files, this is test code for recorder.py
+	Function: try to import dust event data from the original grib2 files, this is test code for recorder.py
 	Error: lack of the specific data files, fail to confirm 
 	Usage: python speedtest.py
 
 data preprocess:
 
 	*1.datagen.py
-	Function: generate the train data from one grb2 file. To randomly generate non-dust dates, we'll use the mean and standard deviations of the latitudes and longitudes for all dust entries. Write to the output CSV an entry with the file name, indices, and that it is a nondust event (0) or a dust event(1).
+	Function: generate the train data from one grib2 file. To randomly generate non-dust dates, we'll use the mean and standard deviations of the latitudes and longitudes for all dust entries. Write to the output CSV an entry with the file name, indices, and that it is a nondust event (0) or a dust event(1).
 	Error: lack of the specific data files, fail to confirm 
 	Usage: python datagen.py
 
 	2.getdates.py
-	Function: generate nondustentries.csv by writing dates to the names of grb2 files
+	Function: generate nondustentries.csv by writing dates to the names of grib2 files
 	Usage: python getdates.py
 
 	*3.pca.py
@@ -65,7 +67,7 @@ data preprocess:
 	Usage: python pca.py
 
 	4.retrieve.py
-	Function: a simple program to test how to read grb2 files
+	Function: a simple program to test how to read grib2 files
 	Usage: python retrieve.py
 
 	5.simplestats.py
@@ -89,8 +91,6 @@ NN related code:
 	Function: This is for running RNN.(5 hidden layers, each layer has 25 nodes). Train data: trainpc.csv. Test data: testpc.csv.
 	Error: after 10 epoch of training, the accuracy is  0.000000000 
 	Usage: python dustnn.py
-
-	
 
 Note: ‘*’ emphasizes the code is really important for his project
 
