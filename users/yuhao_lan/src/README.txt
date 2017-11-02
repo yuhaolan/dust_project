@@ -1,20 +1,30 @@
 =============================================================================
 Extract_data_from_grib2.py:
-	The code is for read one compressed file and extract the specific longitude and latitude from all grib2 files.
+	The code is for reading one compressed file and extracting the specific longitude and latitude from all grib2 files in this compressed file.
 
 USAGE:
 	python Extract_data_from_grib2.py <PATH OF THE COMPRESSED FILE>
 
+Output: <compressed file name>.csv
+Content of this cvs file:
+  Each row: one dust instance that happened on the date of the compressed file
+  Column A: instance id
+  Column B: dust instance date
+  Column C: starting time of the dust instance (from the training_data.csv)
+  Column D: ending time of the dust instance (from the training_data.csv)
+  Column E+F: dust storm instance’s longitude and latitude
+  Column G+H: the longitude and latitude of the cell that is closest to the dust storm
+  Columns I, etc. (columns 4-320, in total 317 layers)
 
 =============================================================================
-Now, Extract_data_from_grib2.py has 5 functions except the main function:
+Extract_data_from_grib2.py has 5 functions except the main function:
 
-1.unzip_tarfile(tar_file):
+1. unzip_tarfile(tar_file):
 
 Parameters:
 	tar_file: this is the name of the compressed file
 Functionality:
-	This function takes compressed file as input and unzip the compressed file. Besides, it also captures the date, start hour and end hour from the name of the compressed file.
+	This function takes the compressed file as input and unzip the compressed file. Besides, it also captures the date, start hour and end hour from the name of the compressed file.
 Return:
 	1.file_folder: this is the unzipped file fold’s name
 	2.hour_start: this is the start hour
@@ -26,7 +36,7 @@ Return:
 Parameters:
 	target_date: this is the specific date we want to search
 Functionality:
-	This function takes specific date as input and file the target longitude and latitude from file ’Training_Data.csv’
+	This function takes a specific date as input and find the target longitude and latitude from file ’Training_Data.csv’
 
 Return:
 	1.Longitude: this is the target longitude for the date
@@ -44,8 +54,8 @@ Parameters:
 
 
 Functionality:
-	This function reads one grib2 file, and search the value in position of specific target longitude and latitude in all layers(call get_all_layers_data function). 
-	Then it transfer the values in all layers to a row vector. For example, if we have 2 pairs of longitude and latitude, we will have a 2-D array, each row is one instance. 
+	This function reads one grib2 file, and searches the value in position of specific target longitude and latitude in all layers(call get_all_layers_data function). 
+	Then it transfers the values in all layers to a row vector. For example, if we have 2 pairs of longitude and latitude, we will have a 2-D array, each row is one instance. 
 	After that, it insert target longitude, target latitude, actual longitude, actual latitude to the top of each row of this 2-D array
 
 Return:
