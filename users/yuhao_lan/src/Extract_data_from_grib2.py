@@ -67,7 +67,7 @@ def read_one_grib2(file,longitude,latitude, logger):
 		eight_non_dust_event_instance = get_8_non_dust_event_data(grbs, nearest_row_index, nearest_col_index, size, logger)
 		#add target longitude, target latitude, actual longitude, actual latitude to the top of the instance array
 		one_instance = np.insert(one_instance,0,[t_long, t_lat,all_lons[x[0],y[0]], all_lats[x[0],y[0]] ])
-		eight_non_dust_event_instance = np.insert(eight_non_dust_event_instance,0,[t_long, t_lat,all_lons[x[0],y[0]], all_lats[x[0],y[0]] ])
+		#eight_non_dust_event_instance = np.insert(eight_non_dust_event_instance,0,[t_long, t_lat,all_lons[x[0],y[0]], all_lats[x[0],y[0]] ])
 		if i == 0:
 			all_instance_of_one_grib2 = one_instance
 			all_8_none_dust_cells_of_one_grib2 = eight_non_dust_event_instance
@@ -160,6 +160,8 @@ def get_8_non_dust_event_data(grbs, nearest_row_index, nearest_col_index, size, 
 		if cell8_values.size != 0:
 			all_8_none_dust_cells = np.vstack((all_8_none_dust_cells,cell8_values))
 
+		print "all_8_none_dust_cells"
+		print all_8_none_dust_cells
 
 	return all_8_none_dust_cells
 
@@ -207,6 +209,7 @@ def read_all_grib2(file_folder, hour_start, hour_end, logger):
 		if i % 2 == 0:
 		#target longitude, target latitude, actual longitude, actual latitude, 750 layers values
 			first_grib, first_8_nondust = read_one_grib2( './' + file_folder + '/' + grib2,Longitude,Latitude, logger)
+			print "first_8_nondust"
 			print first_8_nondust
 		#each odd time, concatenate the files
 		if i % 2 == 1:
@@ -223,6 +226,7 @@ def read_all_grib2(file_folder, hour_start, hour_end, logger):
 				all_instance_of_one_grib2 = np.append(first_grib,second_grib,axis = 1)
 
 			#produce nondust instances
+			print "second_8_nondust"
 			print second_8_nondust
 			second_8_nondust = np.delete(second_8_nondust, [0,1,2,3], 1)
 			eight_nondust_of_one_instance = np.append(first_8_nondust,second_8_nondust,axis = 1)
