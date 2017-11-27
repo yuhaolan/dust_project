@@ -62,7 +62,7 @@ def read_one_grib2(file,longitude,latitude, logger):
 		#print "layer number " + str(size)
 		logger.info('layer number :%s ', str(size))
 		
-		one_instance = get_all_layers_data(grbs, nearest_row_index, nearest_col_index, size, logger)
+		one_instance = get_dust_event_all_layers_data(grbs, nearest_row_index, nearest_col_index, size, logger)
 
 		eight_non_dust_event_instance = get_8_non_dust_event_data(grbs, nearest_row_index, nearest_col_index, size, logger)
 		#add target longitude, target latitude, actual longitude, actual latitude to the top of the instance array
@@ -82,7 +82,7 @@ def read_one_grib2(file,longitude,latitude, logger):
 	
 
 #find the cell's values of all layers in one grbs file
-def get_all_layers_data(grbs, nearest_row_index, nearest_col_index, size, logger):
+def get_dust_event_all_layers_data(grbs, nearest_row_index, nearest_col_index, size, logger):
 	#row_values is one instance contains 317 layers value
 	#initialize to be zero 
 	row_values = np.asarray([])

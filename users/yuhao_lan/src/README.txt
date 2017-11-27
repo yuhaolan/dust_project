@@ -63,7 +63,7 @@ Return:
 	format : target longitude, target latitude, actual longitude, actual latitude , layer1’s value, layer2’s value … layer 317’s value
 
 
-4.get_all_layers_data(grbs, nearest_row_index, nearest_col_index, size, logger):
+4.get_dust_event_all_layers_data(grbs, nearest_row_index, nearest_col_index, size, logger):
 
 Parameters:
 	grbs: this is the grib2 file to read
